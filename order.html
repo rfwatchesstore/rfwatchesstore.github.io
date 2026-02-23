@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>إتمام الطلب</title>
+<style>
+body {
+  font-family: Arial;
+  background: #f5f5f5;
+  text-align: center;
+}
+
+.container {
+  background: white;
+  width: 350px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+input, select {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  background: red;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.price {
+  margin-top: 15px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>معلومات الطلب</h2>
+
+  <input type="text" placeholder="الاسم الكامل">
+
+  <input type="text" placeholder="رقم الهاتف">
+
+  <select id="wilaya" onchange="calculatePrice()">
+    <option value="0">اختر الولاية</option>
+    <option value="600">الجزائر (+600 دج)</option>
+    <option value="800">وهران (+800 دج)</option>
+    <option value="900">قسنطينة (+900 دج)</option>
+  </select>
+
+  <div class="price" id="finalPrice">
+    السعر النهائي: 2350 دج
+  </div>
+
+  <button>تأكيد الطلب</button>
+</div>
+
+<script>
+let productPrice = 2350; // بدل السعر حسب المنتج
+
+function calculatePrice() {
+  let delivery = document.getElementById("wilaya").value;
+  let total = productPrice + parseInt(delivery);
+  document.getElementById("finalPrice").innerHTML =
+    "السعر النهائي: " + total + " دج";
+}
+</script>
+
+</body>
+</html>
